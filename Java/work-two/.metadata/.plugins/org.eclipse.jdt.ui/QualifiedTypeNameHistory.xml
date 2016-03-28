@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.sql.DriverManager"/>
+<fullyQualifiedTypeName name="java.sql.Statement"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="org.junit.Test"/>
+<fullyQualifiedTypeName name="org.activiti.engine.ProcessEngineConfiguration"/>
+<fullyQualifiedTypeName name="org.activiti.engine.ProcessEngine"/>
+<fullyQualifiedTypeName name="org.activiti.engine.RepositoryService"/>
+<fullyQualifiedTypeName name="org.activiti.engine.RuntimeService"/>
+<fullyQualifiedTypeName name="org.activiti.engine.impl.cmd.StartProcessInstanceByMessageCmd"/>
+<fullyQualifiedTypeName name="org.activiti.engine.runtime.ProcessInstance"/>
+<fullyQualifiedTypeName name="org.activiti.engine.TaskService"/>
+<fullyQualifiedTypeName name="org.activiti.bpmn.model.Task"/>
+<fullyQualifiedTypeName name="org.activiti.engine.task.Task"/>
+</qualifiedTypeNameHistroy>

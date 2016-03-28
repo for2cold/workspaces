@@ -1,0 +1,5 @@
+package com.for2cold.activiti.h2;
+
+public class H2DBTest {
+
+}

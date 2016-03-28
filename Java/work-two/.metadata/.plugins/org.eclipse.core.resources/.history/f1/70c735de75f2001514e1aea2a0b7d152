@@ -1,0 +1,27 @@
+package com.for2cold.activiti;
+
+import org.activiti.engine.ProcessEngine;
+import org.activiti.engine.ProcessEngineConfiguration;
+import org.activiti.engine.RepositoryService;
+
+public class FirstDemo {
+
+	public static void main(String[] args) {
+		/**
+		 * 1. 创建流程图
+		 * 2. 上次流程图
+		 * 3. 部署流程图
+		 * 4. 启动流程
+		 * 5. 处理流程任务
+		 */
+		
+		// 1. 获取流程引擎配置
+		ProcessEngineConfiguration config = ProcessEngineConfiguration.createProcessEngineConfigurationFromResource("/config/activiti.cfg.xml");
+		// 2. 获取流程引擎
+		ProcessEngine engine = config.buildProcessEngine();
+		// 3. 获取RepositoryService
+		RepositoryService repositoryService = engine.getRepositoryService();
+		// 4. 部署流程图
+		
+	}
+}

@@ -1,0 +1,8 @@
+package com.for2cold.activiti.h2;
+
+public class H2DBTest {
+
+	public static void main(String[] args) {
+		Class.forName("org.h2.Driver");
+	}
+}

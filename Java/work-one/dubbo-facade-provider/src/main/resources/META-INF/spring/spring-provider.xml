@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.for2cold.rpc.dubbo.facade" />
+    <context:annotation-config />
+
+    <dubbo:application name="for2cold-rpc-dubbo" />
+
+    <dubbo:registry id="zk1" check="false" subscribe="false" address="zookeeper://127.0.0.1:2181" protocol="zookeeper"/>
+
+    <dubbo:protocol id="dubbo1" name="dubbo" port="20886"/>
+
+    <dubbo:provider registry="zk1" protocol="dubbo1"/>
+
+    <dubbo:service interface="com.for2cold.rpc.dubbo.facade.UserFacade" ref="userFacade" />
+
+</beans>
