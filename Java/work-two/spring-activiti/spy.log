@@ -1,0 +1,1522 @@
+1459847998301|-1||debug||com.p6spy.engine.common.P6SpyOptions reloading properties
+1459847998304|-1||info||Using properties file: D:\workspaces\Java\work-two\spring-activiti\target\classes\spy.properties
+1459847998304|-1||info||No value in environment for: getStackTrace, using: false
+1459847998304|-1||info||No value in environment for: getFilter, using: false
+1459847998304|-1||info||No value in environment for: getUsePrefix, using: false
+1459847998304|-1||info||No value in environment for: getDeregisterDrivers, using: true
+1459847998304|-1||info||No value in environment for: getExecutionThreshold, using: 0
+1459847998304|-1||info||No value in environment for: getExcludecategories, using: info,debug,result,batch
+1459847998305|-1||info||No value in environment for: getIncludecategories, using: 
+1459847998305|-1||info||No value in environment for: getStringMatcherEngine, using: com.p6spy.engine.common.SubstringMatcher@73700b80
+1459847998305|-1||info||No value in environment for: getStackTraceClass, using: 
+1459847998305|-1||info||No value in environment for: getReloadProperties, using: false
+1459847998305|-1||info||No value in environment for: getReloadPropertiesInterval, using: 60
+1459847998305|-1||info||No value in environment for: getJNDIContextFactory, using: null
+1459847998305|-1||info||No value in environment for: getJNDIContextProviderURL, using: null
+1459847998305|-1||info||No value in environment for: getJNDIContextCustom, using: null
+1459847998305|-1||info||No value in environment for: getRealDataSource, using: null
+1459847998305|-1||info||No value in environment for: getRealDataSourceClass, using: null
+1459847998305|-1||info||No value in environment for: getRealDataSourceProperties, using: null
+1459847998305|-1||info||No value in environment for: getAutoflush, using: true
+1459847998305|-1||info||No value in environment for: getExclude, using: 
+1459847998305|-1||info||No value in environment for: getInclude, using: 
+1459847998305|-1||info||No value in environment for: getLogfile, using: spy.log
+1459847998305|-1||info||No value in environment for: getAppender, using: com.p6spy.engine.logging.appender.FileLogger
+1459847998305|-1||info||No value in environment for: getRealdriver, using: com.mysql.jdbc.Driver
+1459847998305|-1||info||No value in environment for: getRealdriver2, using: 
+1459847998305|-1||info||No value in environment for: getRealdriver3, using: 
+1459847998305|-1||info||No value in environment for: getAppend, using: true
+1459847998305|-1||info||No value in environment for: getSpydriver, using: com.p6spy.engine.spy.P6SpyDriver
+1459847998305|-1||info||No value in environment for: getDateformat, using: 
+1459847998305|-1||info||No value in environment for: getDateformatter, using: null
+1459847998305|-1||info||No value in environment for: getStringmatcher, using: com.p6spy.engine.common.SubstringMatcher
+1459847998305|-1||info||No value in environment for: getSQLExpression, using: null
+1459847999147|1|1|statement|select * from ACT_GE_PROPERTY where NAME_ = ?|select * from ACT_GE_PROPERTY where NAME_ = 'schema.version'
+1459847999151|-1||resultset|select * from ACT_GE_PROPERTY where NAME_ = 'schema.version'|NAME_ = schema.version, REV_ = 1, VALUE_ = 5.10
+1459847999154|1|1|commit||
+1459847999166|1|2|statement|select JOB.* 
+    from ACT_RU_JOB JOB
+   		LEFT OUTER JOIN ACT_RU_EXECUTION PI ON PI.ID_ = JOB.PROCESS_INSTANCE_ID_
+    	LEFT OUTER JOIN ACT_RE_PROCDEF PD ON PD.ID_ = PI.PROC_DEF_ID_    
+    where (RETRIES_ > 0)
+      and (DUEDATE_ is null or DUEDATE_ <= ?)
+      and (LOCK_OWNER_ is null or LOCK_EXP_TIME_ <= ?)
+      and (
+	  	    (JOB.EXECUTION_ID_ is null)
+	  		or ((PI.SUSPENSION_STATE_ = 1)     
+      			and (PD.SUSPENSION_STATE_ = 1))
+      )  
+    LIMIT ? OFFSET ?|select JOB.* 
+    from ACT_RU_JOB JOB
+   		LEFT OUTER JOIN ACT_RU_EXECUTION PI ON PI.ID_ = JOB.PROCESS_INSTANCE_ID_
+    	LEFT OUTER JOIN ACT_RE_PROCDEF PD ON PD.ID_ = PI.PROC_DEF_ID_    
+    where (RETRIES_ > 0)
+      and (DUEDATE_ is null or DUEDATE_ <= '2016-04-05 17:19:59.163')
+      and (LOCK_OWNER_ is null or LOCK_EXP_TIME_ <= '2016-04-05 17:19:59.163')
+      and (
+	  	    (JOB.EXECUTION_ID_ is null)
+	  		or ((PI.SUSPENSION_STATE_ = 1)     
+      			and (PD.SUSPENSION_STATE_ = 1))
+      )  
+    LIMIT 3 OFFSET 0
+1459847999166|0|2|commit||
+1459847999170|0|3|statement|select *
+    from ACT_RU_JOB
+    where (TYPE_ = 'timer')
+      and (DUEDATE_ is not null)
+      and (DUEDATE_ < ?)
+      and (LOCK_OWNER_ is null or LOCK_EXP_TIME_ < ?)
+      and (RETRIES_  > 0)
+    order by DUEDATE_
+    LIMIT ? OFFSET ?|select *
+    from ACT_RU_JOB
+    where (TYPE_ = 'timer')
+      and (DUEDATE_ is not null)
+      and (DUEDATE_ < '2016-04-05 17:20:04.166')
+      and (LOCK_OWNER_ is null or LOCK_EXP_TIME_ < '2016-04-05 17:20:04.166')
+      and (RETRIES_  > 0)
+    order by DUEDATE_
+    LIMIT 1 OFFSET 0
+1459847999172|1|3|commit||
+1459847999254|1|5|statement|select * from ACT_GE_PROPERTY where NAME_ = ?|select * from ACT_GE_PROPERTY where NAME_ = 'next.dbid'
+1459847999254|-1||resultset|select * from ACT_GE_PROPERTY where NAME_ = 'next.dbid'|NAME_ = next.dbid, REV_ = 2, VALUE_ = 101
+1459847999256|0|5|statement|update ACT_GE_PROPERTY
+     SET REV_ = ?,
+      VALUE_ = ? 
+    where NAME_ = ?
+      and REV_ = ?|update ACT_GE_PROPERTY
+     SET REV_ = 3,
+      VALUE_ = '201' 
+    where NAME_ = 'next.dbid'
+      and REV_ = 2
+1459847999312|55|5|commit||
+1459847999428|0|4|statement|select *
+    from ACT_RE_PROCDEF 
+    where KEY_ = ? and
+          VERSION_ = (select max(VERSION_) from ACT_RE_PROCDEF where KEY_ = ?)|select *
+    from ACT_RE_PROCDEF 
+    where KEY_ = 'helloProcess' and
+          VERSION_ = (select max(VERSION_) from ACT_RE_PROCDEF where KEY_ = 'helloProcess')
+1459847999431|2|4|statement|select * from ACT_RU_JOB
+      where HANDLER_TYPE_ = ?
+      and HANDLER_CFG_ =  ?
+    LIMIT ? OFFSET ?|select * from ACT_RU_JOB
+      where HANDLER_TYPE_ = 'timer-start-event'
+      and HANDLER_CFG_ =  'helloProcess'
+    LIMIT 2147483647 OFFSET 0
+1459847999433|1|4|statement|insert into ACT_RE_DEPLOYMENT(ID_, NAME_, DEPLOY_TIME_)
+    values(?, ?, ?)|insert into ACT_RE_DEPLOYMENT(ID_, NAME_, DEPLOY_TIME_)
+    values('101', '', '2016-04-05 17:19:59.249')
+1459847999434|1|4|statement|insert into ACT_GE_BYTEARRAY(ID_, REV_, NAME_, BYTES_, DEPLOYMENT_ID_, GENERATED_)
+    values (?, 1, ?, ?, ?, ?)|insert into ACT_GE_BYTEARRAY(ID_, REV_, NAME_, BYTES_, DEPLOYMENT_ID_, GENERATED_)
+    values ('102', 1, 'workflow/hello.bpmn', 'java.io.ByteArrayInputStream@20f12539', '101', 'false')
+1459847999435|1|4|statement|insert into ACT_RE_PROCDEF(ID_, REV_, CATEGORY_, NAME_, KEY_, VERSION_, DEPLOYMENT_ID_, RESOURCE_NAME_, DGRM_RESOURCE_NAME_, HAS_START_FORM_KEY_, SUSPENSION_STATE_)
+    values (?,
+    		1,
+            ?,
+            ?,
+            ?, 
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?)|insert into ACT_RE_PROCDEF(ID_, REV_, CATEGORY_, NAME_, KEY_, VERSION_, DEPLOYMENT_ID_, RESOURCE_NAME_, DGRM_RESOURCE_NAME_, HAS_START_FORM_KEY_, SUSPENSION_STATE_)
+    values ('helloProcess:1:103',
+    		1,
+            'http://www.activiti.org/test',
+            'Hello',
+            'helloProcess', 
+            1,
+            '101',
+            'workflow/hello.bpmn',
+            '',
+            'false',
+            1)
+1459847999469|34|4|commit||
+1459847999493|1|6|statement|select distinct count(D.ID_)
+       
+    from ACT_RE_DEPLOYMENT D|select distinct count(D.ID_)
+       
+    from ACT_RE_DEPLOYMENT D
+1459847999493|-1||resultset|select distinct count(D.ID_)
+       
+    from ACT_RE_DEPLOYMENT D|
+1459847999493|0|6|commit||
+1459847999498|0|7|statement|select *
+    from ACT_RE_PROCDEF 
+    where KEY_ = ? and
+          VERSION_ = (select max(VERSION_) from ACT_RE_PROCDEF where KEY_ = ?)|select *
+    from ACT_RE_PROCDEF 
+    where KEY_ = 'helloProcess' and
+          VERSION_ = (select max(VERSION_) from ACT_RE_PROCDEF where KEY_ = 'helloProcess')
+1459847999499|-1||resultset|select *
+    from ACT_RE_PROCDEF 
+    where KEY_ = 'helloProcess' and
+          VERSION_ = (select max(VERSION_) from ACT_RE_PROCDEF where KEY_ = 'helloProcess')|CATEGORY_ = http://www.activiti.org/test, DEPLOYMENT_ID_ = 101, DGRM_RESOURCE_NAME_ = null, ID_ = helloProcess:1:103, KEY_ = helloProcess, NAME_ = Hello, RESOURCE_NAME_ = workflow/hello.bpmn, REV_ = 1, SUSPENSION_STATE_ = 1, VERSION_ = 1
+1459847999509|1|7|statement|insert into ACT_RU_EXECUTION (ID_, REV_, PROC_INST_ID_, BUSINESS_KEY_, PROC_DEF_ID_, ACT_ID_, IS_ACTIVE_, IS_CONCURRENT_, IS_SCOPE_,IS_EVENT_SCOPE_, PARENT_ID_, SUPER_EXEC_, SUSPENSION_STATE_, CACHED_ENT_STATE_)
+    values (
+      ?,
+      1,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?
+    )|insert into ACT_RU_EXECUTION (ID_, REV_, PROC_INST_ID_, BUSINESS_KEY_, PROC_DEF_ID_, ACT_ID_, IS_ACTIVE_, IS_CONCURRENT_, IS_SCOPE_,IS_EVENT_SCOPE_, PARENT_ID_, SUPER_EXEC_, SUSPENSION_STATE_, CACHED_ENT_STATE_)
+    values (
+      '104',
+      1,
+      '104',
+      '',
+      'helloProcess:1:103',
+      'usertask1',
+      'true',
+      'false',
+      'true',
+      'false',
+      '',
+      '',
+      1,
+      2
+    )
+1459847999510|0|7|statement|insert into ACT_RU_VARIABLE (ID_, REV_, TYPE_, NAME_, PROC_INST_ID_, EXECUTION_ID_, TASK_ID_, BYTEARRAY_ID_, DOUBLE_, LONG_ , TEXT_, TEXT2_)
+    values (
+	    ?,
+	    1,
+	    ?,
+	    ?,
+      ?,
+	    ?,
+      ?,
+	    ?,
+	    ?,
+	    ?,
+	    ?,
+	    ?
+    )|insert into ACT_RU_VARIABLE (ID_, REV_, TYPE_, NAME_, PROC_INST_ID_, EXECUTION_ID_, TASK_ID_, BYTEARRAY_ID_, DOUBLE_, LONG_ , TEXT_, TEXT2_)
+    values (
+	    '105',
+	    1,
+	    'string',
+	    'firstPerson',
+      '104',
+	    '104',
+      '',
+	    '',
+	    '',
+	    '',
+	    'for2cold',
+	    ''
+    )
+1459847999512|1|7|statement|insert into ACT_HI_PROCINST (
+        ID_,
+        PROC_INST_ID_,
+        BUSINESS_KEY_,
+        PROC_DEF_ID_,
+        START_TIME_,
+        END_TIME_,
+        DURATION_,
+        START_USER_ID_,
+        START_ACT_ID_,
+        END_ACT_ID_,
+        SUPER_PROCESS_INSTANCE_ID_,
+        DELETE_REASON_
+      ) values (
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?
+      )|insert into ACT_HI_PROCINST (
+        ID_,
+        PROC_INST_ID_,
+        BUSINESS_KEY_,
+        PROC_DEF_ID_,
+        START_TIME_,
+        END_TIME_,
+        DURATION_,
+        START_USER_ID_,
+        START_ACT_ID_,
+        END_ACT_ID_,
+        SUPER_PROCESS_INSTANCE_ID_,
+        DELETE_REASON_
+      ) values (
+        '104',
+        '104',
+        '',
+        'helloProcess:1:103',
+        '2016-04-05 17:19:59.5',
+        '',
+        '',
+        'for2cold',
+        'startevent1',
+        '',
+        '',
+        ''
+      )
+1459847999513|0|7|statement|insert into ACT_HI_ACTINST (
+        ID_,
+        PROC_DEF_ID_,
+        PROC_INST_ID_,
+        EXECUTION_ID_,
+        ACT_ID_,
+        ACT_NAME_,
+        ACT_TYPE_,
+        ASSIGNEE_,
+        START_TIME_,
+        END_TIME_,
+        DURATION_
+      ) values (
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?
+      )|insert into ACT_HI_ACTINST (
+        ID_,
+        PROC_DEF_ID_,
+        PROC_INST_ID_,
+        EXECUTION_ID_,
+        ACT_ID_,
+        ACT_NAME_,
+        ACT_TYPE_,
+        ASSIGNEE_,
+        START_TIME_,
+        END_TIME_,
+        DURATION_
+      ) values (
+        '106',
+        'helloProcess:1:103',
+        '104',
+        '104',
+        'startevent1',
+        'Start',
+        'startEvent',
+        '',
+        '2016-04-05 17:19:59.5',
+        '2016-04-05 17:19:59.505',
+        5
+      )
+1459847999514|0|7|statement|insert into ACT_HI_ACTINST (
+        ID_,
+        PROC_DEF_ID_,
+        PROC_INST_ID_,
+        EXECUTION_ID_,
+        ACT_ID_,
+        ACT_NAME_,
+        ACT_TYPE_,
+        ASSIGNEE_,
+        START_TIME_,
+        END_TIME_,
+        DURATION_
+      ) values (
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?
+      )|insert into ACT_HI_ACTINST (
+        ID_,
+        PROC_DEF_ID_,
+        PROC_INST_ID_,
+        EXECUTION_ID_,
+        ACT_ID_,
+        ACT_NAME_,
+        ACT_TYPE_,
+        ASSIGNEE_,
+        START_TIME_,
+        END_TIME_,
+        DURATION_
+      ) values (
+        '107',
+        'helloProcess:1:103',
+        '104',
+        '104',
+        'usertask1',
+        'Step 1',
+        'userTask',
+        'kermit',
+        '2016-04-05 17:19:59.505',
+        '',
+        ''
+      )
+1459847999612|97|7|statement|insert into ACT_RU_TASK (ID_, REV_, NAME_, PARENT_TASK_ID_, DESCRIPTION_, PRIORITY_, CREATE_TIME_, OWNER_,
+                      ASSIGNEE_, DELEGATION_, EXECUTION_ID_, PROC_INST_ID_, PROC_DEF_ID_, TASK_DEF_KEY_, DUE_DATE_)
+    values (?,
+            1,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?
+           )|insert into ACT_RU_TASK (ID_, REV_, NAME_, PARENT_TASK_ID_, DESCRIPTION_, PRIORITY_, CREATE_TIME_, OWNER_,
+                      ASSIGNEE_, DELEGATION_, EXECUTION_ID_, PROC_INST_ID_, PROC_DEF_ID_, TASK_DEF_KEY_, DUE_DATE_)
+    values ('108',
+            1,
+            'Step 1',
+            '',
+            '',
+            50,
+            '2016-04-05 17:19:59.505',
+            '',
+            'kermit',
+            '',
+            '104',
+            '104',
+            'helloProcess:1:103',
+            'usertask1',
+            ''
+           )
+1459847999619|3|7|statement|insert into ACT_HI_TASKINST (
+        ID_,
+        PROC_DEF_ID_,
+        PROC_INST_ID_,
+        EXECUTION_ID_,
+        NAME_,
+        PARENT_TASK_ID_,
+        DESCRIPTION_,
+        OWNER_,
+        ASSIGNEE_,
+        START_TIME_,
+        END_TIME_,
+        DURATION_,
+        DELETE_REASON_,
+        TASK_DEF_KEY_,
+        PRIORITY_,
+        DUE_DATE_
+      ) values (
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?
+      )|insert into ACT_HI_TASKINST (
+        ID_,
+        PROC_DEF_ID_,
+        PROC_INST_ID_,
+        EXECUTION_ID_,
+        NAME_,
+        PARENT_TASK_ID_,
+        DESCRIPTION_,
+        OWNER_,
+        ASSIGNEE_,
+        START_TIME_,
+        END_TIME_,
+        DURATION_,
+        DELETE_REASON_,
+        TASK_DEF_KEY_,
+        PRIORITY_,
+        DUE_DATE_
+      ) values (
+        '108',
+        'helloProcess:1:103',
+        '104',
+        '104',
+        'Step 1',
+        '',
+        '',
+        '',
+        'kermit',
+        '2016-04-05 17:19:59.505',
+        '',
+        '',
+        '',
+        'usertask1',
+        50,
+        ''
+      )
+1459847999675|56|7|commit||
+1459847999703|0|8|statement|select distinct T.*
+       
+    from ACT_RU_TASK T
+     
+     
+     
+     
+     WHERE  T.ASSIGNEE_ = ? 
+   
+     
+    LIMIT ? OFFSET ?|select distinct T.*
+       
+    from ACT_RU_TASK T
+     
+     
+     
+     
+     WHERE  T.ASSIGNEE_ = 'kermit' 
+   
+     
+    LIMIT 2147483647 OFFSET 0
+1459847999704|-1||resultset|select distinct T.*
+       
+    from ACT_RU_TASK T
+     
+     
+     
+     
+     WHERE  T.ASSIGNEE_ = 'kermit' 
+   
+     
+    LIMIT 2147483647 OFFSET 0|ASSIGNEE_ = kermit, DELEGATION_ = null, DESCRIPTION_ = null, EXECUTION_ID_ = 104, ID_ = 108, NAME_ = Step 1, OWNER_ = null, PARENT_TASK_ID_ = null, PRIORITY_ = 50, PROC_DEF_ID_ = helloProcess:1:103, PROC_INST_ID_ = 104, REV_ = 1, TASK_DEF_KEY_ = usertask1
+1459847999705|1|8|commit||
+1459847999711|0|9|statement|select * from ACT_RU_TASK where ID_ = ?|select * from ACT_RU_TASK where ID_ = '108'
+1459847999712|-1||resultset|select * from ACT_RU_TASK where ID_ = '108'|ASSIGNEE_ = kermit, DELEGATION_ = null, DESCRIPTION_ = null, EXECUTION_ID_ = 104, ID_ = 108, NAME_ = Step 1, OWNER_ = null, PARENT_TASK_ID_ = null, PRIORITY_ = 50, PROC_DEF_ID_ = helloProcess:1:103, PROC_INST_ID_ = 104, REV_ = 1, TASK_DEF_KEY_ = usertask1
+1459847999712|0|9|commit||
+1459847999718|0|10|statement|select distinct T.*
+       
+    from ACT_RU_TASK T
+     
+     
+     
+     
+     WHERE  T.ASSIGNEE_ = ? 
+   
+     
+    LIMIT ? OFFSET ?|select distinct T.*
+       
+    from ACT_RU_TASK T
+     
+     
+     
+     
+     WHERE  T.ASSIGNEE_ = 'kermit' 
+   
+     
+    LIMIT 2147483647 OFFSET 0
+1459847999719|-1||resultset|select distinct T.*
+       
+    from ACT_RU_TASK T
+     
+     
+     
+     
+     WHERE  T.ASSIGNEE_ = 'kermit' 
+   
+     
+    LIMIT 2147483647 OFFSET 0|ASSIGNEE_ = kermit, DELEGATION_ = null, DESCRIPTION_ = null, EXECUTION_ID_ = 104, ID_ = 108, NAME_ = Step 1, OWNER_ = null, PARENT_TASK_ID_ = null, PRIORITY_ = 50, PROC_DEF_ID_ = helloProcess:1:103, PROC_INST_ID_ = 104, REV_ = 1, TASK_DEF_KEY_ = usertask1
+1459847999720|1|10|commit||
+1459847999726|0|11|statement|select * from ACT_RU_TASK where ID_ = ?|select * from ACT_RU_TASK where ID_ = '108'
+1459847999727|-1||resultset|select * from ACT_RU_TASK where ID_ = '108'|ASSIGNEE_ = kermit, DELEGATION_ = null, DESCRIPTION_ = null, EXECUTION_ID_ = 104, ID_ = 108, NAME_ = Step 1, OWNER_ = null, PARENT_TASK_ID_ = null, PRIORITY_ = 50, PROC_DEF_ID_ = helloProcess:1:103, PROC_INST_ID_ = 104, REV_ = 1, TASK_DEF_KEY_ = usertask1
+1459847999728|0|11|statement|select * from ACT_RE_PROCDEF where ID_ = ?|select * from ACT_RE_PROCDEF where ID_ = 'helloProcess:1:103'
+1459847999729|-1||resultset|select * from ACT_RE_PROCDEF where ID_ = 'helloProcess:1:103'|CATEGORY_ = http://www.activiti.org/test, DEPLOYMENT_ID_ = 101, DGRM_RESOURCE_NAME_ = null, ID_ = helloProcess:1:103, KEY_ = helloProcess, NAME_ = Hello, RESOURCE_NAME_ = workflow/hello.bpmn, REV_ = 1, SUSPENSION_STATE_ = 1, VERSION_ = 1
+1459847999730|1|11|statement|select * from ACT_RU_TASK where PARENT_TASK_ID_ = ?|select * from ACT_RU_TASK where PARENT_TASK_ID_ = '108'
+1459847999731|0|11|statement|select * from ACT_RU_IDENTITYLINK where TASK_ID_ = ?
+    LIMIT ? OFFSET ?|select * from ACT_RU_IDENTITYLINK where TASK_ID_ = '108'
+    LIMIT 2147483647 OFFSET 0
+1459847999732|0|11|statement|select * from ACT_RU_VARIABLE where
+    TASK_ID_ = ?|select * from ACT_RU_VARIABLE where
+    TASK_ID_ = '108'
+1459847999733|0|11|statement|select * from ACT_HI_TASKINST where ID_ = ?|select * from ACT_HI_TASKINST where ID_ = '108'
+1459847999734|-1||resultset|select * from ACT_HI_TASKINST where ID_ = '108'|ASSIGNEE_ = kermit, DELETE_REASON_ = null, DESCRIPTION_ = null, EXECUTION_ID_ = 104, ID_ = 108, NAME_ = Step 1, OWNER_ = null, PARENT_TASK_ID_ = null, PRIORITY_ = 50, PROC_DEF_ID_ = helloProcess:1:103, PROC_INST_ID_ = 104, TASK_DEF_KEY_ = usertask1
+1459847999735|0|11|statement|select * from ACT_RU_EXECUTION where ID_ = ?|select * from ACT_RU_EXECUTION where ID_ = '104'
+1459847999736|-1||resultset|select * from ACT_RU_EXECUTION where ID_ = '104'|ACT_ID_ = usertask1, BUSINESS_KEY_ = null, CACHED_ENT_STATE_ = 2, ID_ = 104, PARENT_ID_ = null, PROC_DEF_ID_ = helloProcess:1:103, PROC_INST_ID_ = 104, REV_ = 1, SUPER_EXEC_ = null, SUSPENSION_STATE_ = 1
+1459847999737|1|11|statement|select distinct T.*
+    from ACT_RU_TASK T
+    where T.EXECUTION_ID_ = ?|select distinct T.*
+    from ACT_RU_TASK T
+    where T.EXECUTION_ID_ = '104'
+1459847999737|-1||resultset|select distinct T.*
+    from ACT_RU_TASK T
+    where T.EXECUTION_ID_ = '104'|ASSIGNEE_ = kermit, DELEGATION_ = null, DESCRIPTION_ = null, EXECUTION_ID_ = 104, ID_ = 108, NAME_ = Step 1, OWNER_ = null, PARENT_TASK_ID_ = null, PRIORITY_ = 50, PROC_DEF_ID_ = helloProcess:1:103, PROC_INST_ID_ = 104, REV_ = 1, TASK_DEF_KEY_ = usertask1
+1459847999739|0|11|statement|select *
+     
+    from ACT_HI_ACTINST HAI
+     WHERE  HAI.EXECUTION_ID_ = ?
+      
+      
+      
+        and HAI.ACT_ID_ = ?
+      
+      
+      
+      
+      
+        and HAI.END_TIME_ is null 
+   
+     
+    LIMIT ? OFFSET ?|select *
+     
+    from ACT_HI_ACTINST HAI
+     WHERE  HAI.EXECUTION_ID_ = '104'
+      
+      
+      
+        and HAI.ACT_ID_ = 'usertask1'
+      
+      
+      
+      
+      
+        and HAI.END_TIME_ is null 
+   
+     
+    LIMIT 1 OFFSET 0
+1459847999740|-1||resultset|select *
+     
+    from ACT_HI_ACTINST HAI
+     WHERE  HAI.EXECUTION_ID_ = '104'
+      
+      
+      
+        and HAI.ACT_ID_ = 'usertask1'
+      
+      
+      
+      
+      
+        and HAI.END_TIME_ is null 
+   
+     
+    LIMIT 1 OFFSET 0|ACT_ID_ = usertask1, ACT_NAME_ = Step 1, ACT_TYPE_ = userTask, ASSIGNEE_ = kermit, EXECUTION_ID_ = 104, ID_ = 107, PROC_DEF_ID_ = helloProcess:1:103, PROC_INST_ID_ = 104
+1459847999741|0|11|statement|select * from ACT_RU_EXECUTION
+    where PARENT_ID_ = ?
+    LIMIT ? OFFSET ?|select * from ACT_RU_EXECUTION
+    where PARENT_ID_ = '104'
+    LIMIT 2147483647 OFFSET 0
+1459847999760|1|11|statement|insert into ACT_RU_EXECUTION (ID_, REV_, PROC_INST_ID_, BUSINESS_KEY_, PROC_DEF_ID_, ACT_ID_, IS_ACTIVE_, IS_CONCURRENT_, IS_SCOPE_,IS_EVENT_SCOPE_, PARENT_ID_, SUPER_EXEC_, SUSPENSION_STATE_, CACHED_ENT_STATE_)
+    values (
+      ?,
+      1,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?
+    )|insert into ACT_RU_EXECUTION (ID_, REV_, PROC_INST_ID_, BUSINESS_KEY_, PROC_DEF_ID_, ACT_ID_, IS_ACTIVE_, IS_CONCURRENT_, IS_SCOPE_,IS_EVENT_SCOPE_, PARENT_ID_, SUPER_EXEC_, SUSPENSION_STATE_, CACHED_ENT_STATE_)
+    values (
+      '109',
+      1,
+      '104',
+      '',
+      'helloProcess:1:103',
+      'usertask2',
+      'true',
+      'false',
+      'true',
+      'false',
+      '104',
+      '',
+      1,
+      6
+    )
+1459847999880|119|11|statement|insert into ACT_RU_JOB (
+            ID_, 
+            REV_,
+            TYPE_,
+            LOCK_OWNER_, 
+            LOCK_EXP_TIME_,
+            EXCLUSIVE_,
+            EXECUTION_ID_, 
+            PROCESS_INSTANCE_ID_,
+            RETRIES_, 
+            EXCEPTION_STACK_ID_,
+            EXCEPTION_MSG_,
+            DUEDATE_,
+            REPEAT_,
+            HANDLER_TYPE_,
+            HANDLER_CFG_ )
+    values (?,
+            1,
+            'timer',
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?
+    )|insert into ACT_RU_JOB (
+            ID_, 
+            REV_,
+            TYPE_,
+            LOCK_OWNER_, 
+            LOCK_EXP_TIME_,
+            EXCLUSIVE_,
+            EXECUTION_ID_, 
+            PROCESS_INSTANCE_ID_,
+            RETRIES_, 
+            EXCEPTION_STACK_ID_,
+            EXCEPTION_MSG_,
+            DUEDATE_,
+            REPEAT_,
+            HANDLER_TYPE_,
+            HANDLER_CFG_ )
+    values ('110',
+            1,
+            'timer',
+            '',
+            '',
+            'true',
+            '109',
+            '104',
+            3,
+            '',
+            '',
+            '2016-04-05 17:20:04.758',
+            '',
+            'timer-transition',
+            'boundarytimer1'
+    )
+1459847999887|3|11|statement|insert into ACT_HI_ACTINST (
+        ID_,
+        PROC_DEF_ID_,
+        PROC_INST_ID_,
+        EXECUTION_ID_,
+        ACT_ID_,
+        ACT_NAME_,
+        ACT_TYPE_,
+        ASSIGNEE_,
+        START_TIME_,
+        END_TIME_,
+        DURATION_
+      ) values (
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?
+      )|insert into ACT_HI_ACTINST (
+        ID_,
+        PROC_DEF_ID_,
+        PROC_INST_ID_,
+        EXECUTION_ID_,
+        ACT_ID_,
+        ACT_NAME_,
+        ACT_TYPE_,
+        ASSIGNEE_,
+        START_TIME_,
+        END_TIME_,
+        DURATION_
+      ) values (
+        '111',
+        'helloProcess:1:103',
+        '104',
+        '109',
+        'usertask2',
+        'Step 2',
+        'userTask',
+        'stone',
+        '2016-04-05 17:19:59.758',
+        '',
+        ''
+      )
+1459847999896|6|11|statement|insert into ACT_RU_TASK (ID_, REV_, NAME_, PARENT_TASK_ID_, DESCRIPTION_, PRIORITY_, CREATE_TIME_, OWNER_,
+                      ASSIGNEE_, DELEGATION_, EXECUTION_ID_, PROC_INST_ID_, PROC_DEF_ID_, TASK_DEF_KEY_, DUE_DATE_)
+    values (?,
+            1,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?
+           )|insert into ACT_RU_TASK (ID_, REV_, NAME_, PARENT_TASK_ID_, DESCRIPTION_, PRIORITY_, CREATE_TIME_, OWNER_,
+                      ASSIGNEE_, DELEGATION_, EXECUTION_ID_, PROC_INST_ID_, PROC_DEF_ID_, TASK_DEF_KEY_, DUE_DATE_)
+    values ('112',
+            1,
+            'Step 2',
+            '',
+            '',
+            50,
+            '2016-04-05 17:19:59.758',
+            '',
+            'stone',
+            '',
+            '109',
+            '104',
+            'helloProcess:1:103',
+            'usertask2',
+            ''
+           )
+1459847999902|2|11|statement|insert into ACT_HI_TASKINST (
+        ID_,
+        PROC_DEF_ID_,
+        PROC_INST_ID_,
+        EXECUTION_ID_,
+        NAME_,
+        PARENT_TASK_ID_,
+        DESCRIPTION_,
+        OWNER_,
+        ASSIGNEE_,
+        START_TIME_,
+        END_TIME_,
+        DURATION_,
+        DELETE_REASON_,
+        TASK_DEF_KEY_,
+        PRIORITY_,
+        DUE_DATE_
+      ) values (
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?
+      )|insert into ACT_HI_TASKINST (
+        ID_,
+        PROC_DEF_ID_,
+        PROC_INST_ID_,
+        EXECUTION_ID_,
+        NAME_,
+        PARENT_TASK_ID_,
+        DESCRIPTION_,
+        OWNER_,
+        ASSIGNEE_,
+        START_TIME_,
+        END_TIME_,
+        DURATION_,
+        DELETE_REASON_,
+        TASK_DEF_KEY_,
+        PRIORITY_,
+        DUE_DATE_
+      ) values (
+        '112',
+        'helloProcess:1:103',
+        '104',
+        '109',
+        'Step 2',
+        '',
+        '',
+        '',
+        'stone',
+        '2016-04-05 17:19:59.758',
+        '',
+        '',
+        '',
+        'usertask2',
+        50,
+        ''
+      )
+1459847999905|2|11|statement|update ACT_HI_ACTINST set
+      EXECUTION_ID_ = ?,
+      ASSIGNEE_ = ?,
+      END_TIME_ = ?,
+      DURATION_ = ?
+    where ID_ = ?|update ACT_HI_ACTINST set
+      EXECUTION_ID_ = '104',
+      ASSIGNEE_ = 'kermit',
+      END_TIME_ = '2016-04-05 17:19:59.74',
+      DURATION_ = -260
+    where ID_ = '107'
+1459847999909|2|11|statement|update ACT_HI_TASKINST set
+      EXECUTION_ID_ = ?,
+      NAME_ = ?,
+      PARENT_TASK_ID_ = ?,
+      DESCRIPTION_ = ?,
+      OWNER_ = ?,
+      ASSIGNEE_ = ?,
+      END_TIME_ = ?,
+      DURATION_ = ?,
+      DELETE_REASON_ = ?,
+      TASK_DEF_KEY_ = ?,
+      PRIORITY_ = ?,
+      DUE_DATE_ = ?
+    where ID_ = ?|update ACT_HI_TASKINST set
+      EXECUTION_ID_ = '104',
+      NAME_ = 'Step 1',
+      PARENT_TASK_ID_ = '',
+      DESCRIPTION_ = '',
+      OWNER_ = '',
+      ASSIGNEE_ = 'kermit',
+      END_TIME_ = '2016-04-05 17:19:59.734',
+      DURATION_ = -266,
+      DELETE_REASON_ = 'completed',
+      TASK_DEF_KEY_ = 'usertask1',
+      PRIORITY_ = 50,
+      DUE_DATE_ = ''
+    where ID_ = '108'
+1459847999969|59|11|statement|update ACT_RU_EXECUTION set
+      REV_ = ?,
+      PROC_DEF_ID_ = ?,
+      ACT_ID_ = ?,
+      IS_ACTIVE_ = ?,
+      IS_CONCURRENT_ = ?,
+      IS_SCOPE_ = ?,
+      IS_EVENT_SCOPE_ = ?,
+      PARENT_ID_ = ?,
+      SUPER_EXEC_ = ?,
+      SUSPENSION_STATE_ = ?,
+      CACHED_ENT_STATE_ = ?
+    where ID_ = ?
+      and REV_ = ?|update ACT_RU_EXECUTION set
+      REV_ = 2,
+      PROC_DEF_ID_ = 'helloProcess:1:103',
+      ACT_ID_ = '',
+      IS_ACTIVE_ = 'false',
+      IS_CONCURRENT_ = 'false',
+      IS_SCOPE_ = 'true',
+      IS_EVENT_SCOPE_ = 'false',
+      PARENT_ID_ = '',
+      SUPER_EXEC_ = '',
+      SUSPENSION_STATE_ = 1,
+      CACHED_ENT_STATE_ = 0
+    where ID_ = '104'
+      and REV_ = 1
+1459847999971|2|11|statement|delete from ACT_RU_TASK where ID_ = ?|delete from ACT_RU_TASK where ID_ = '108'
+1459848000012|41|11|commit||
+1459848004184|2|12|statement|select JOB.* 
+    from ACT_RU_JOB JOB
+   		LEFT OUTER JOIN ACT_RU_EXECUTION PI ON PI.ID_ = JOB.PROCESS_INSTANCE_ID_
+    	LEFT OUTER JOIN ACT_RE_PROCDEF PD ON PD.ID_ = PI.PROC_DEF_ID_    
+    where (RETRIES_ > 0)
+      and (DUEDATE_ is null or DUEDATE_ <= ?)
+      and (LOCK_OWNER_ is null or LOCK_EXP_TIME_ <= ?)
+      and (
+	  	    (JOB.EXECUTION_ID_ is null)
+	  		or ((PI.SUSPENSION_STATE_ = 1)     
+      			and (PD.SUSPENSION_STATE_ = 1))
+      )  
+    LIMIT ? OFFSET ?|select JOB.* 
+    from ACT_RU_JOB JOB
+   		LEFT OUTER JOIN ACT_RU_EXECUTION PI ON PI.ID_ = JOB.PROCESS_INSTANCE_ID_
+    	LEFT OUTER JOIN ACT_RE_PROCDEF PD ON PD.ID_ = PI.PROC_DEF_ID_    
+    where (RETRIES_ > 0)
+      and (DUEDATE_ is null or DUEDATE_ <= '2016-04-05 17:20:04.179')
+      and (LOCK_OWNER_ is null or LOCK_EXP_TIME_ <= '2016-04-05 17:20:04.179')
+      and (
+	  	    (JOB.EXECUTION_ID_ is null)
+	  		or ((PI.SUSPENSION_STATE_ = 1)     
+      			and (PD.SUSPENSION_STATE_ = 1))
+      )  
+    LIMIT 3 OFFSET 0
+1459848004185|1|12|commit||
+1459848004190|1|13|statement|select *
+    from ACT_RU_JOB
+    where (TYPE_ = 'timer')
+      and (DUEDATE_ is not null)
+      and (DUEDATE_ < ?)
+      and (LOCK_OWNER_ is null or LOCK_EXP_TIME_ < ?)
+      and (RETRIES_  > 0)
+    order by DUEDATE_
+    LIMIT ? OFFSET ?|select *
+    from ACT_RU_JOB
+    where (TYPE_ = 'timer')
+      and (DUEDATE_ is not null)
+      and (DUEDATE_ < '2016-04-05 17:20:09.186')
+      and (LOCK_OWNER_ is null or LOCK_EXP_TIME_ < '2016-04-05 17:20:09.186')
+      and (RETRIES_  > 0)
+    order by DUEDATE_
+    LIMIT 1 OFFSET 0
+1459848004190|-1||resultset|select *
+    from ACT_RU_JOB
+    where (TYPE_ = 'timer')
+      and (DUEDATE_ is not null)
+      and (DUEDATE_ < '2016-04-05 17:20:09.186')
+      and (LOCK_OWNER_ is null or LOCK_EXP_TIME_ < '2016-04-05 17:20:09.186')
+      and (RETRIES_  > 0)
+    order by DUEDATE_
+    LIMIT 1 OFFSET 0|EXCEPTION_MSG_ = null, EXCEPTION_STACK_ID_ = null, EXECUTION_ID_ = 109, HANDLER_CFG_ = boundarytimer1, HANDLER_TYPE_ = timer-transition, ID_ = 110, LOCK_OWNER_ = null, PROCESS_INSTANCE_ID_ = 104, REPEAT_ = null, RETRIES_ = 3, REV_ = 1, TYPE_ = timer
+1459848004191|1|13|commit||
+1459848005010|1|14|statement|select JOB.* 
+    from ACT_RU_JOB JOB
+   		LEFT OUTER JOIN ACT_RU_EXECUTION PI ON PI.ID_ = JOB.PROCESS_INSTANCE_ID_
+    	LEFT OUTER JOIN ACT_RE_PROCDEF PD ON PD.ID_ = PI.PROC_DEF_ID_    
+    where (RETRIES_ > 0)
+      and (DUEDATE_ is null or DUEDATE_ <= ?)
+      and (LOCK_OWNER_ is null or LOCK_EXP_TIME_ <= ?)
+      and (
+	  	    (JOB.EXECUTION_ID_ is null)
+	  		or ((PI.SUSPENSION_STATE_ = 1)     
+      			and (PD.SUSPENSION_STATE_ = 1))
+      )  
+    LIMIT ? OFFSET ?|select JOB.* 
+    from ACT_RU_JOB JOB
+   		LEFT OUTER JOIN ACT_RU_EXECUTION PI ON PI.ID_ = JOB.PROCESS_INSTANCE_ID_
+    	LEFT OUTER JOIN ACT_RE_PROCDEF PD ON PD.ID_ = PI.PROC_DEF_ID_    
+    where (RETRIES_ > 0)
+      and (DUEDATE_ is null or DUEDATE_ <= '2016-04-05 17:20:05.008')
+      and (LOCK_OWNER_ is null or LOCK_EXP_TIME_ <= '2016-04-05 17:20:05.008')
+      and (
+	  	    (JOB.EXECUTION_ID_ is null)
+	  		or ((PI.SUSPENSION_STATE_ = 1)     
+      			and (PD.SUSPENSION_STATE_ = 1))
+      )  
+    LIMIT 3 OFFSET 0
+1459848005011|-1||resultset|select JOB.* 
+    from ACT_RU_JOB JOB
+   		LEFT OUTER JOIN ACT_RU_EXECUTION PI ON PI.ID_ = JOB.PROCESS_INSTANCE_ID_
+    	LEFT OUTER JOIN ACT_RE_PROCDEF PD ON PD.ID_ = PI.PROC_DEF_ID_    
+    where (RETRIES_ > 0)
+      and (DUEDATE_ is null or DUEDATE_ <= '2016-04-05 17:20:05.008')
+      and (LOCK_OWNER_ is null or LOCK_EXP_TIME_ <= '2016-04-05 17:20:05.008')
+      and (
+	  	    (JOB.EXECUTION_ID_ is null)
+	  		or ((PI.SUSPENSION_STATE_ = 1)     
+      			and (PD.SUSPENSION_STATE_ = 1))
+      )  
+    LIMIT 3 OFFSET 0|EXCEPTION_MSG_ = null, EXCEPTION_STACK_ID_ = null, EXECUTION_ID_ = 109, HANDLER_CFG_ = boundarytimer1, HANDLER_TYPE_ = timer-transition, ID_ = 110, LOCK_OWNER_ = null, PROCESS_INSTANCE_ID_ = 104, REPEAT_ = null, RETRIES_ = 3, REV_ = 1, TYPE_ = timer
+1459848005013|1|14|statement|select * 
+    from ACT_RU_JOB 
+    where (RETRIES_ > 0)
+      and (DUEDATE_ is null or DUEDATE_ <= ?)
+      and (LOCK_OWNER_ is null or LOCK_EXP_TIME_ <= ?)
+      and (EXCLUSIVE_ = TRUE)
+      and (PROCESS_INSTANCE_ID_ = ?)
+    LIMIT ? OFFSET ?|select * 
+    from ACT_RU_JOB 
+    where (RETRIES_ > 0)
+      and (DUEDATE_ is null or DUEDATE_ <= '2016-04-05 17:20:05.012')
+      and (LOCK_OWNER_ is null or LOCK_EXP_TIME_ <= '2016-04-05 17:20:05.012')
+      and (EXCLUSIVE_ = TRUE)
+      and (PROCESS_INSTANCE_ID_ = '104')
+    LIMIT 2147483647 OFFSET 0
+1459848005014|-1||resultset|select * 
+    from ACT_RU_JOB 
+    where (RETRIES_ > 0)
+      and (DUEDATE_ is null or DUEDATE_ <= '2016-04-05 17:20:05.012')
+      and (LOCK_OWNER_ is null or LOCK_EXP_TIME_ <= '2016-04-05 17:20:05.012')
+      and (EXCLUSIVE_ = TRUE)
+      and (PROCESS_INSTANCE_ID_ = '104')
+    LIMIT 2147483647 OFFSET 0|EXCEPTION_MSG_ = null, EXCEPTION_STACK_ID_ = null, EXECUTION_ID_ = 109, HANDLER_CFG_ = boundarytimer1, HANDLER_TYPE_ = timer-transition, ID_ = 110, LOCK_OWNER_ = null, PROCESS_INSTANCE_ID_ = 104, REPEAT_ = null, RETRIES_ = 3, REV_ = 1, TYPE_ = timer
+1459848005017|1|14|statement|update ACT_RU_JOB
+     SET REV_ =  ?,
+       LOCK_EXP_TIME_ = ?,
+       LOCK_OWNER_ = ?,
+       RETRIES_ = ?,
+       EXCEPTION_STACK_ID_ = ?,
+       EXCEPTION_MSG_ = ?,
+       DUEDATE_ = ? 
+    where ID_= ?
+      and REV_ = ?|update ACT_RU_JOB
+     SET REV_ =  2,
+       LOCK_EXP_TIME_ = '2016-04-05 17:25:05.015',
+       LOCK_OWNER_ = 'ad49a61b-12cb-44d5-bd36-40648e060f88',
+       RETRIES_ = 3,
+       EXCEPTION_STACK_ID_ = '',
+       EXCEPTION_MSG_ = '',
+       DUEDATE_ = '2016-04-05 17:20:05.0' 
+    where ID_= '110'
+      and REV_ = 1
+1459848005123|106|14|commit||
+1459848005140|1|15|statement|select * from ACT_RU_JOB where ID_ = ?|select * from ACT_RU_JOB where ID_ = '110'
+1459848005141|-1||resultset|select * from ACT_RU_JOB where ID_ = '110'|EXCEPTION_MSG_ = null, EXCEPTION_STACK_ID_ = null, EXECUTION_ID_ = 109, HANDLER_CFG_ = boundarytimer1, HANDLER_TYPE_ = timer-transition, ID_ = 110, LOCK_OWNER_ = ad49a61b-12cb-44d5-bd36-40648e060f88, PROCESS_INSTANCE_ID_ = 104, REPEAT_ = null, RETRIES_ = 3, REV_ = 2, TYPE_ = timer
+1459848005143|3|16|statement|select *
+    from ACT_RU_JOB
+    where (TYPE_ = 'timer')
+      and (DUEDATE_ is not null)
+      and (DUEDATE_ < ?)
+      and (LOCK_OWNER_ is null or LOCK_EXP_TIME_ < ?)
+      and (RETRIES_  > 0)
+    order by DUEDATE_
+    LIMIT ? OFFSET ?|select *
+    from ACT_RU_JOB
+    where (TYPE_ = 'timer')
+      and (DUEDATE_ is not null)
+      and (DUEDATE_ < '2016-04-05 17:20:10.127')
+      and (LOCK_OWNER_ is null or LOCK_EXP_TIME_ < '2016-04-05 17:20:10.127')
+      and (RETRIES_  > 0)
+    order by DUEDATE_
+    LIMIT 1 OFFSET 0
+1459848005143|1|15|statement|select * from ACT_RU_EXECUTION where ID_ = ?|select * from ACT_RU_EXECUTION where ID_ = '109'
+1459848005144|-1||resultset|select * from ACT_RU_EXECUTION where ID_ = '109'|ACT_ID_ = usertask2, BUSINESS_KEY_ = null, CACHED_ENT_STATE_ = 6, ID_ = 109, PARENT_ID_ = 104, PROC_DEF_ID_ = helloProcess:1:103, PROC_INST_ID_ = 104, REV_ = 1, SUPER_EXEC_ = null, SUSPENSION_STATE_ = 1
+1459848005146|1|15|statement|select * from ACT_RE_PROCDEF where ID_ = ?|select * from ACT_RE_PROCDEF where ID_ = 'helloProcess:1:103'
+1459848005147|-1||resultset|select * from ACT_RE_PROCDEF where ID_ = 'helloProcess:1:103'|CATEGORY_ = http://www.activiti.org/test, DEPLOYMENT_ID_ = 101, DGRM_RESOURCE_NAME_ = null, ID_ = helloProcess:1:103, KEY_ = helloProcess, NAME_ = Hello, RESOURCE_NAME_ = workflow/hello.bpmn, REV_ = 1, SUSPENSION_STATE_ = 1, VERSION_ = 1
+1459848005148|1|15|statement|select *
+    from ACT_RU_EXECUTION
+    where SUPER_EXEC_ = ?|select *
+    from ACT_RU_EXECUTION
+    where SUPER_EXEC_ = '109'
+1459848005148|5|16|commit||
+1459848005150|1|15|statement|select * from ACT_RU_EXECUTION
+    where PARENT_ID_ = ?
+    LIMIT ? OFFSET ?|select * from ACT_RU_EXECUTION
+    where PARENT_ID_ = '109'
+    LIMIT 2147483647 OFFSET 0
+1459848005154|2|15|statement|select *
+     
+    from ACT_HI_ACTINST HAI
+     WHERE  HAI.EXECUTION_ID_ = ?
+      
+      
+      
+        and HAI.ACT_ID_ = ?
+      
+      
+      
+      
+      
+        and HAI.END_TIME_ is null 
+   
+     
+    LIMIT ? OFFSET ?|select *
+     
+    from ACT_HI_ACTINST HAI
+     WHERE  HAI.EXECUTION_ID_ = '109'
+      
+      
+      
+        and HAI.ACT_ID_ = 'usertask2'
+      
+      
+      
+      
+      
+        and HAI.END_TIME_ is null 
+   
+     
+    LIMIT 1 OFFSET 0
+1459848005155|-1||resultset|select *
+     
+    from ACT_HI_ACTINST HAI
+     WHERE  HAI.EXECUTION_ID_ = '109'
+      
+      
+      
+        and HAI.ACT_ID_ = 'usertask2'
+      
+      
+      
+      
+      
+        and HAI.END_TIME_ is null 
+   
+     
+    LIMIT 1 OFFSET 0|ACT_ID_ = usertask2, ACT_NAME_ = Step 2, ACT_TYPE_ = userTask, ASSIGNEE_ = stone, EXECUTION_ID_ = 109, ID_ = 111, PROC_DEF_ID_ = helloProcess:1:103, PROC_INST_ID_ = 104
+1459848005156|1|15|statement|select * from ACT_RU_EXECUTION where ID_ = ?|select * from ACT_RU_EXECUTION where ID_ = '104'
+1459848005158|-1||resultset|select * from ACT_RU_EXECUTION where ID_ = '104'|ACT_ID_ = null, BUSINESS_KEY_ = null, CACHED_ENT_STATE_ = 0, ID_ = 104, PARENT_ID_ = null, PROC_DEF_ID_ = helloProcess:1:103, PROC_INST_ID_ = 104, REV_ = 2, SUPER_EXEC_ = null, SUSPENSION_STATE_ = 1
+1459848005160|1|15|statement|select * from ACT_RU_VARIABLE 
+		where EXECUTION_ID_ = ?
+		  and TASK_ID_ is null|select * from ACT_RU_VARIABLE 
+		where EXECUTION_ID_ = '109'
+		  and TASK_ID_ is null
+1459848005161|1|15|statement|select * from ACT_RU_EXECUTION
+    where PARENT_ID_ = ?
+    LIMIT ? OFFSET ?|select * from ACT_RU_EXECUTION
+    where PARENT_ID_ = '104'
+    LIMIT 2147483647 OFFSET 0
+1459848005161|-1||resultset|select * from ACT_RU_EXECUTION
+    where PARENT_ID_ = '104'
+    LIMIT 2147483647 OFFSET 0|ACT_ID_ = usertask2, BUSINESS_KEY_ = null, CACHED_ENT_STATE_ = 6, ID_ = 109, PARENT_ID_ = 104, PROC_DEF_ID_ = helloProcess:1:103, PROC_INST_ID_ = 104, REV_ = 1, SUPER_EXEC_ = null, SUSPENSION_STATE_ = 1
+1459848005162|0|15|statement|select distinct T.*
+    from ACT_RU_TASK T
+    where T.EXECUTION_ID_ = ?|select distinct T.*
+    from ACT_RU_TASK T
+    where T.EXECUTION_ID_ = '109'
+1459848005162|-1||resultset|select distinct T.*
+    from ACT_RU_TASK T
+    where T.EXECUTION_ID_ = '109'|ASSIGNEE_ = stone, DELEGATION_ = null, DESCRIPTION_ = null, EXECUTION_ID_ = 109, ID_ = 112, NAME_ = Step 2, OWNER_ = null, PARENT_TASK_ID_ = null, PRIORITY_ = 50, PROC_DEF_ID_ = helloProcess:1:103, PROC_INST_ID_ = 104, REV_ = 1, TASK_DEF_KEY_ = usertask2
+1459848005163|0|15|statement|select * from ACT_RU_TASK where PARENT_TASK_ID_ = ?|select * from ACT_RU_TASK where PARENT_TASK_ID_ = '112'
+1459848005163|0|15|statement|select * from ACT_RU_IDENTITYLINK where TASK_ID_ = ?
+    LIMIT ? OFFSET ?|select * from ACT_RU_IDENTITYLINK where TASK_ID_ = '112'
+    LIMIT 2147483647 OFFSET 0
+1459848005164|0|15|statement|select * from ACT_RU_VARIABLE where
+    TASK_ID_ = ?|select * from ACT_RU_VARIABLE where
+    TASK_ID_ = '112'
+1459848005164|0|15|statement|select * from ACT_HI_TASKINST where ID_ = ?|select * from ACT_HI_TASKINST where ID_ = '112'
+1459848005165|-1||resultset|select * from ACT_HI_TASKINST where ID_ = '112'|ASSIGNEE_ = stone, DELETE_REASON_ = null, DESCRIPTION_ = null, EXECUTION_ID_ = 109, ID_ = 112, NAME_ = Step 2, OWNER_ = null, PARENT_TASK_ID_ = null, PRIORITY_ = 50, PROC_DEF_ID_ = helloProcess:1:103, PROC_INST_ID_ = 104, TASK_DEF_KEY_ = usertask2
+1459848005165|0|15|statement|select *
+    from ACT_RU_JOB J
+    where J.EXECUTION_ID_ = ?
+    LIMIT ? OFFSET ?|select *
+    from ACT_RU_JOB J
+    where J.EXECUTION_ID_ = '109'
+    LIMIT 2147483647 OFFSET 0
+1459848005166|-1||resultset|select *
+    from ACT_RU_JOB J
+    where J.EXECUTION_ID_ = '109'
+    LIMIT 2147483647 OFFSET 0|EXCEPTION_MSG_ = null, EXCEPTION_STACK_ID_ = null, EXECUTION_ID_ = 109, HANDLER_CFG_ = boundarytimer1, HANDLER_TYPE_ = timer-transition, ID_ = 110, LOCK_OWNER_ = ad49a61b-12cb-44d5-bd36-40648e060f88, PROCESS_INSTANCE_ID_ = 104, REPEAT_ = null, RETRIES_ = 3, REV_ = 2, TYPE_ = timer
+1459848005167|0|15|statement|insert into ACT_HI_ACTINST (
+        ID_,
+        PROC_DEF_ID_,
+        PROC_INST_ID_,
+        EXECUTION_ID_,
+        ACT_ID_,
+        ACT_NAME_,
+        ACT_TYPE_,
+        ASSIGNEE_,
+        START_TIME_,
+        END_TIME_,
+        DURATION_
+      ) values (
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?
+      )|insert into ACT_HI_ACTINST (
+        ID_,
+        PROC_DEF_ID_,
+        PROC_INST_ID_,
+        EXECUTION_ID_,
+        ACT_ID_,
+        ACT_NAME_,
+        ACT_TYPE_,
+        ASSIGNEE_,
+        START_TIME_,
+        END_TIME_,
+        DURATION_
+      ) values (
+        '113',
+        'helloProcess:1:103',
+        '104',
+        '104',
+        'usertask3',
+        'step 2.1',
+        'userTask',
+        'kermit',
+        '2016-04-05 17:20:05.166',
+        '',
+        ''
+      )
+1459848005168|0|15|statement|insert into ACT_RU_TASK (ID_, REV_, NAME_, PARENT_TASK_ID_, DESCRIPTION_, PRIORITY_, CREATE_TIME_, OWNER_,
+                      ASSIGNEE_, DELEGATION_, EXECUTION_ID_, PROC_INST_ID_, PROC_DEF_ID_, TASK_DEF_KEY_, DUE_DATE_)
+    values (?,
+            1,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?
+           )|insert into ACT_RU_TASK (ID_, REV_, NAME_, PARENT_TASK_ID_, DESCRIPTION_, PRIORITY_, CREATE_TIME_, OWNER_,
+                      ASSIGNEE_, DELEGATION_, EXECUTION_ID_, PROC_INST_ID_, PROC_DEF_ID_, TASK_DEF_KEY_, DUE_DATE_)
+    values ('114',
+            1,
+            'step 2.1',
+            '',
+            '',
+            50,
+            '2016-04-05 17:20:05.166',
+            '',
+            'kermit',
+            '',
+            '104',
+            '104',
+            'helloProcess:1:103',
+            'usertask3',
+            ''
+           )
+1459848005206|37|15|statement|insert into ACT_HI_TASKINST (
+        ID_,
+        PROC_DEF_ID_,
+        PROC_INST_ID_,
+        EXECUTION_ID_,
+        NAME_,
+        PARENT_TASK_ID_,
+        DESCRIPTION_,
+        OWNER_,
+        ASSIGNEE_,
+        START_TIME_,
+        END_TIME_,
+        DURATION_,
+        DELETE_REASON_,
+        TASK_DEF_KEY_,
+        PRIORITY_,
+        DUE_DATE_
+      ) values (
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?
+      )|insert into ACT_HI_TASKINST (
+        ID_,
+        PROC_DEF_ID_,
+        PROC_INST_ID_,
+        EXECUTION_ID_,
+        NAME_,
+        PARENT_TASK_ID_,
+        DESCRIPTION_,
+        OWNER_,
+        ASSIGNEE_,
+        START_TIME_,
+        END_TIME_,
+        DURATION_,
+        DELETE_REASON_,
+        TASK_DEF_KEY_,
+        PRIORITY_,
+        DUE_DATE_
+      ) values (
+        '114',
+        'helloProcess:1:103',
+        '104',
+        '104',
+        'step 2.1',
+        '',
+        '',
+        '',
+        'kermit',
+        '2016-04-05 17:20:05.166',
+        '',
+        '',
+        '',
+        'usertask3',
+        50,
+        ''
+      )
+1459848005208|1|15|statement|update ACT_HI_ACTINST set
+      EXECUTION_ID_ = ?,
+      ASSIGNEE_ = ?,
+      END_TIME_ = ?,
+      DURATION_ = ?
+    where ID_ = ?|update ACT_HI_ACTINST set
+      EXECUTION_ID_ = '109',
+      ASSIGNEE_ = 'stone',
+      END_TIME_ = '2016-04-05 17:20:05.155',
+      DURATION_ = 5155
+    where ID_ = '111'
+1459848005209|1|15|statement|update ACT_HI_TASKINST set
+      EXECUTION_ID_ = ?,
+      NAME_ = ?,
+      PARENT_TASK_ID_ = ?,
+      DESCRIPTION_ = ?,
+      OWNER_ = ?,
+      ASSIGNEE_ = ?,
+      END_TIME_ = ?,
+      DURATION_ = ?,
+      DELETE_REASON_ = ?,
+      TASK_DEF_KEY_ = ?,
+      PRIORITY_ = ?,
+      DUE_DATE_ = ?
+    where ID_ = ?|update ACT_HI_TASKINST set
+      EXECUTION_ID_ = '109',
+      NAME_ = 'Step 2',
+      PARENT_TASK_ID_ = '',
+      DESCRIPTION_ = '',
+      OWNER_ = '',
+      ASSIGNEE_ = 'stone',
+      END_TIME_ = '2016-04-05 17:20:05.165',
+      DURATION_ = 5165,
+      DELETE_REASON_ = 'deleted',
+      TASK_DEF_KEY_ = 'usertask2',
+      PRIORITY_ = 50,
+      DUE_DATE_ = ''
+    where ID_ = '112'
+1459848005328|118|15|statement|update ACT_RU_EXECUTION set
+      REV_ = ?,
+      PROC_DEF_ID_ = ?,
+      ACT_ID_ = ?,
+      IS_ACTIVE_ = ?,
+      IS_CONCURRENT_ = ?,
+      IS_SCOPE_ = ?,
+      IS_EVENT_SCOPE_ = ?,
+      PARENT_ID_ = ?,
+      SUPER_EXEC_ = ?,
+      SUSPENSION_STATE_ = ?,
+      CACHED_ENT_STATE_ = ?
+    where ID_ = ?
+      and REV_ = ?|update ACT_RU_EXECUTION set
+      REV_ = 3,
+      PROC_DEF_ID_ = 'helloProcess:1:103',
+      ACT_ID_ = 'usertask3',
+      IS_ACTIVE_ = 'true',
+      IS_CONCURRENT_ = 'false',
+      IS_SCOPE_ = 'true',
+      IS_EVENT_SCOPE_ = 'false',
+      PARENT_ID_ = '',
+      SUPER_EXEC_ = '',
+      SUSPENSION_STATE_ = 1,
+      CACHED_ENT_STATE_ = 2
+    where ID_ = '104'
+      and REV_ = 2
+1459848005330|1|15|statement|delete from ACT_RU_TASK where ID_ = ?|delete from ACT_RU_TASK where ID_ = '112'
+1459848005332|1|15|statement|delete from ACT_RU_JOB where ID_ = ?|delete from ACT_RU_JOB where ID_ = '110'
+1459848005335|2|15|statement|delete from ACT_RU_EXECUTION where ID_ = ?|delete from ACT_RU_EXECUTION where ID_ = '109'
+1459848005388|53|15|commit||
+1459848010025|1|17|statement|select distinct T.*
+       
+    from ACT_RU_TASK T
+     
+     
+     
+     
+     WHERE  T.ASSIGNEE_ = ? 
+   
+     
+    LIMIT ? OFFSET ?|select distinct T.*
+       
+    from ACT_RU_TASK T
+     
+     
+     
+     
+     WHERE  T.ASSIGNEE_ = 'stone' 
+   
+     
+    LIMIT 2147483647 OFFSET 0
+1459848010026|0|17|commit||
+1459848010034|1|18|statement|select distinct T.*
+       
+    from ACT_RU_TASK T
+     
+     
+     
+     
+     WHERE  T.ASSIGNEE_ = ? 
+   
+     
+    LIMIT ? OFFSET ?|select distinct T.*
+       
+    from ACT_RU_TASK T
+     
+     
+     
+     
+     WHERE  T.ASSIGNEE_ = 'stone' 
+   
+     
+    LIMIT 2147483647 OFFSET 0
+1459848010035|1|18|commit||
+1459848010042|0|19|statement|select distinct T.*
+       
+    from ACT_RU_TASK T
+     
+     
+     
+     
+     WHERE  T.ASSIGNEE_ = ? 
+   
+     
+    LIMIT ? OFFSET ?|select distinct T.*
+       
+    from ACT_RU_TASK T
+     
+     
+     
+     
+     WHERE  T.ASSIGNEE_ = 'kermit' 
+   
+     
+    LIMIT 2147483647 OFFSET 0
+1459848010043|-1||resultset|select distinct T.*
+       
+    from ACT_RU_TASK T
+     
+     
+     
+     
+     WHERE  T.ASSIGNEE_ = 'kermit' 
+   
+     
+    LIMIT 2147483647 OFFSET 0|ASSIGNEE_ = kermit, DELEGATION_ = null, DESCRIPTION_ = null, EXECUTION_ID_ = 104, ID_ = 114, NAME_ = step 2.1, OWNER_ = null, PARENT_TASK_ID_ = null, PRIORITY_ = 50, PROC_DEF_ID_ = helloProcess:1:103, PROC_INST_ID_ = 104, REV_ = 1, TASK_DEF_KEY_ = usertask3
+1459848010044|0|19|commit||
+1459848010051|1|20|statement|select * from ACT_RU_TASK where ID_ = ?|select * from ACT_RU_TASK where ID_ = '114'
+1459848010051|-1||resultset|select * from ACT_RU_TASK where ID_ = '114'|ASSIGNEE_ = kermit, DELEGATION_ = null, DESCRIPTION_ = null, EXECUTION_ID_ = 104, ID_ = 114, NAME_ = step 2.1, OWNER_ = null, PARENT_TASK_ID_ = null, PRIORITY_ = 50, PROC_DEF_ID_ = helloProcess:1:103, PROC_INST_ID_ = 104, REV_ = 1, TASK_DEF_KEY_ = usertask3
+1459848010052|0|20|commit||
+1459848010060|0|21|statement|select *
+     
+    from ACT_HI_PROCINST HPI
+     WHERE HPI.PROC_INST_ID_ = ? 
+   
+     
+    LIMIT ? OFFSET ?|select *
+     
+    from ACT_HI_PROCINST HPI
+     WHERE HPI.PROC_INST_ID_ = '104' 
+   
+     
+    LIMIT 2147483647 OFFSET 0
+1459848010061|-1||resultset|select *
+     
+    from ACT_HI_PROCINST HPI
+     WHERE HPI.PROC_INST_ID_ = '104' 
+   
+     
+    LIMIT 2147483647 OFFSET 0|BUSINESS_KEY_ = null, DELETE_REASON_ = null, END_ACT_ID_ = null, ID_ = 104, PROC_DEF_ID_ = helloProcess:1:103, PROC_INST_ID_ = 104, START_ACT_ID_ = startevent1, START_USER_ID_ = for2cold, SUPER_PROCESS_INSTANCE_ID_ = null
+1459848010061|0|21|commit||
+1459848010072|0|22|commit||
