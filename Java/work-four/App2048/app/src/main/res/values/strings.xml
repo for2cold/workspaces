@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">程序员2048</string>
+    <string name="get_money">赚取积分</string>
+</resources>
